@@ -66,14 +66,7 @@
         .divs {
             background-color: white;
         }
-
-        .ANT-cookie-consent {
-            border-top: 8px solid var(--borderColor)
-        }
     </style>
-    <script>
-
-    </script>
     <link href="<?= "/home/ANTStylesheet.css" ?>" rel=stylesheet>
     <style>
         body {
