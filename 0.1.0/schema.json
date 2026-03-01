@@ -12,8 +12,8 @@
     "specVersion": {
       "type": "string",
       "pattern": "^0\\.1\\.0$",
-      "description": "the specification version. MUST be matched against the specification for disambiguation. in this schema it must be 0.1.0.",
-      "$comment": "in terms of regex it must be \"^\\d+\\.\\d+\\.\\d+$\""
+      "description": "the specification version. MUST be matched against the specification for disambiguation. in this schema it MUST be {\"0.1.0\"}. SHOULD be matched to disambiguate specifics of a LayerZip spec",
+      "$comment": "in terms of regex it must be {\"^\\d+\\.\\d+\\.\\d+$\"}"
     },
     "width": {
       "type": "integer",
@@ -50,36 +50,36 @@
             "vectorlayer",
             "grouplayer"
           ],
-          "description": "MUST be one of \"paintlayer\" if a png is associated, \"vectorlayer\" if a svg is associated, \"grouplayer\" if a directory is associated."
+          "description": "MUST be one of {\"paintlayer\"} if a png is associated, {\"vectorlayer\"} if a svg is associated, {\"grouplayer\"} if a directory is associated."
         },
         "name": {
           "type": "string",
-          "description": "the layer's name as seen in the editor. SHOULD be matched exactly. exceptions include but not limited to invalid utf8."
+          "description": "the layer's name as seen in the editor. SHOULD be matched exactly."
         },
         "path": {
           "type": "string",
-          "description": "the layer's path. MUST be Normalized. the path MUST start from the layerzip.json."
+          "description": "the layer's path. MUST be Normalized. the path MUST start from the {\"layerzip.json\"}."
         },
         "visible": {
           "type": "boolean",
-          "description": "if omitted MUST default to true. if present MUST be a json boolean representing if its visible in the editor. must be the actual layer content even if the layer is set to be visible false."
+          "description": "if omitted MUST default to {{true}}. if present MUST be a json boolean representing if its visible in the editor. must be the actual layer content even if the layer is set to be visible false."
         },
         "locked": {
           "type": "boolean",
-          "description": "if omitted MUST default to false. if present MUST be a json boolean representing if its locked in the editor. if the editor doesnt support layer locking then put false."
+          "description": "if omitted MUST default to {{false}}. if present MUST be a json boolean representing if its locked in the editor. if the editor doesnt support layer locking then put false."
         },
         "opacity": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "if omitted MUST default to 1. if present MUST be a json number representing its opacity."
+          "description": "if omitted MUST default to {{1}}. if present MUST be a json number representing its opacity."
         },
         "layers": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/layer"
           },
-          "description": "if omitted MUST default to an empty array. MUST only exist if the type is \"grouplayer\"."
+          "description": "if omitted MUST default to an empty array. MUST only exist if the type is {\"grouplayer\"}."
         }
       }
     }

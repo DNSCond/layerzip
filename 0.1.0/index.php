@@ -2,11 +2,13 @@
 <html lang=en>
 <head>
     <meta charset=UTF-8>
-    <title>LayerZip (ANT.Ractoc.com)</title>
+    <title>The LayerZip Specification (ANTRequest.nl)</title>
     <base href=/layerzip/0.1.0/>
     <meta name="theme-color" content="#0073a6">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src=https://cdn.jsdelivr.net/npm/temporal-polyfill@0.3.0/global.min.js></script>
+    <meta name=description content="<?= "LayerZip is a program independent way to store"
+    . " 2d image layers using zip deflate, png, and a json file." ?>">
+    <script src="<?= "https://cdn.jsdelivr.net/npm/temporal-polyfill@0.3.0/global.min.js" ?>"></script>
     <script>
         globalThis.domContentLoadedPromise = new Promise(function (resolve) {
             if (document.readyState !== 'loading') resolve(document); else {
@@ -19,100 +21,38 @@
             "imports": {
                 "Datetime_global": "/home/head2/datetime-local-v2/Datetime_global.js",
                 "RelativeTimeChecker": "/home/head2/datetime-local-v2/RelativeTimeChecker.js",
-                "temporal-polyfill": "data:text/javascript,const%7BTemporal%7D%3DglobalThis%3Bexport%7BTemporal%7D%3B"
+                "temporal-polyfill": "/require/head2/temporal.js"
             }
         }
     </script>
-    <script type=module src="<?= "/home/head2/import-v2.js" ?>"></script>
-    <style>
-        :root {
-            --primaryColor: #00ff00;
-            --secondaryColor: #00a600;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --primaryColor: #36393f; /*$borderColor*/
-                --secondaryColor: #36393f /*$bgColor*/;
-            }
-        }
-
-        :root {
-            --borderColor: var(--primaryColor);
-            --bgColor: var(--secondaryColor)
-        }
-    </style>
-    <style>
-        a:visited, a:link {
-            color: blue;
-        }
-
-        a:hover {
-            color: orangered;
-        }
-
-        a:active {
-            color: black;
-        }
-
-        button, input, textarea, .monospace, .ms {
-            font-family: monospace;
-        }
-
-        html {
-            font-family: system-uim, sans-serif;
-        }
-
-        .divs {
-            background-color: white;
-        }
-    </style>
-    <link href="<?= "/home/ANTStylesheet.css" ?>" rel=stylesheet>
-    <style>
-        body {
-            background-color: var(--bgColor);
-        }
-
-        nav.main.nav-home {
-            border-bottom-color: var(--borderColor);
-        }
-
-        pre {
-            white-space: pre-wrap;
-            overflow-wrap: break-word;
-            word-break: break-all;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            border: 3px solid #7c7c7c;
-            text-align: left;
-            padding: 8px;
-            box-sizing: border-box;
-            height: 100%;
-        }
-    </style>
+    <script type=module src="<?= "/require/head2/import-v2.js" ?>"></script>
+    <link href="<?= "/require/head2/ANTStylesheet.css" ?>" rel=stylesheet>
+    <link href="<?= "../layerzip.css" ?>" rel=stylesheet>
     <meta name="theme-color" content="#0073a6">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon"
-          href="/dollmaker1/endpoint.php?bgcolor=%2300a8f3&fgcolor=%238cfffa&L=%23fff200&W=%23000000&LC=%23ff0000&RC=%230000ff&v=1"/>
+    <link rel=icon
+          href="<?= $layerzipIcon = "/dollmaker2/icon/endpoint.php?bgcolor=%23000000&amp;fgcolor=%2300ff00&amp;" .
+                  "L=%2300ff00&amp;W=%23000000&amp;LC=%2300ff00&amp;RC=%2300ff00&amp;accessory=lightbar";
+          $favicon = "/dollmaker2/icon/endpoint.php?bgcolor=%2300a8f3&amp;fgcolor=%238cfffa&amp;L=%23fff200&amp;" .
+                  "W=%23000000&amp;LC=%23ff0000&amp;RC=%230000ff" ?>"/>
+    <style><?= array_key_exists('monospace', $_GET) ? 'html{font-family:monospace}' : '' ?></style>
+    <link rel=canonical href=https://antrequest.nl/layerzip/0.1.0/>
 </head>
+<!-- (new Date).toISOString().slice(0,10) -->
 <body>
-<nav style="color:#424242;background-color:currentColor;box-sizing:content-box;height:calc(4.4em + 4px);border-bottom: 4px solid #00ff00">
-    <div style="display:flex;flex-wrap:nowrap;align-items:center;flex-direction:row;height:100%;position:relative;margin:auto;width:88%;/*didnt match*/;box-sizing:border-box;overflow:auto hidden"
-         role="none">
-        <div style="border-width:4px;border-style:solid;padding:0.2em;width:4em;height:4em;border-color:currentColor;border-bottom:none;background-color:currentColor;">
-            <a href="https://ant.ractoc.com" title="Home" aria-current="false"><img
-                        src="/dollmaker1/endpoint.php?bgcolor=%2300a8f3&amp;fgcolor=%238cfffa&amp;L=%23fff200&amp;W=%23000000&amp;LC=%23ff0000&amp;RC=%230000ff&amp;v=1"
-                        style="width:4em;height:4em;" width="512" height="512" alt="Home"></a></div>
-        <div style="border-width:4px;border-style:solid;padding:0.2em;width:4em;height:4em;border-color:#00ff00;border-bottom:none;background-color:#00a600;">
+<nav class=topnav>
+    <div>
+        <div style=border-color:currentColor;background-color:currentColor>
+            <a href=https://antrequest.nl title="Home" aria-current="false"><img
+                        src="<?= $favicon ?>"
+                        width="512" height="512"
+                        alt="Home"
+                ></a></div>
+        <div style=border-color:#00ff00;background-color:#00a600>
             <a href="/layerzip/" title="LayerZip Spec" aria-current="page"><img
-                        src="/dollmaker1/endpoint.php?bgcolor=%23000000&amp;fgcolor=%2300ff00&amp;L=%2300ff00&amp;W=%23000000&amp;LC=%2300ff00&amp;RC=%2300ff00&amp;accessory=lightbar"
-                        style="width:4em;height:4em;" width="512" height="512" alt="void ANT"></a></div>
+                        src="<?= $layerzipIcon ?>"
+                        width="512" height="512"
+                        alt="void ANT"
+                ></a></div>
     </div>
 </nav>
 <div class="divs nav-home">
@@ -125,10 +65,10 @@
         interoperability.
     <h2 id=documentStatus>Status of this document (<a href=#documentStatus>Link to This Section</a>)</h2>
     <p>this document written on
-        <time datetime=2026-02-17 data-tolocaltime=date-only>Tue Feb 17 2026</time>
+        <time datetime=2026-03-01 data-tolocaltime=date-only>Sun Mar 01 2026</time>
         is the latest LayerZip Specification <a href=https://semver.org/>Semantic version</a> 0.1.0.
     <h2 id=external>This Specification uses external references (<a href=#external>Link to This Section</a>)</h2>
-    <ul>
+    <ul class=examples>
         <li><a href=https://www.rfc-editor.org/rfc/rfc2119>The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
                 NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
                 interpreted as described in RFC 2119.</a>
@@ -138,7 +78,12 @@
         <li><a href=https://en.wikipedia.org/wiki/JSON>JSON (Wikipedia)</a>
     </ul>
     <h2 id=examples>Examples of LayerZip in use (<a href=#examples>Link to This Section</a>)</h2>
-    link to examples, for now, nothing. should be an ul of links.
+    link to examples, for now, there are none. should be an <code>&lt;ul&gt;</code> of links.
+    <ul>
+        <li><a href=https://github.com/DNSCond/multiexport-krita-plugin>DNSCond/multiexport-krita-plugi; Reference
+                Implementation</a>. note that if it is wrong then check the spec and if they contradict the Reference
+            Implementation is at fault. can only export for now.
+    </ul>
     <h2 id=zipstruct>The Zip Structure (<a href=#zipstruct>Link to This Section</a>)</h2>
     <!--<?= "XPHP";
     function htmlspecialchars12(string $value): string
@@ -184,10 +129,15 @@
                     $result = array();
                     $requiredArray = $jsonContent['required'];
                     foreach ($jsonContent['properties'] as $key => $item) {
-                        $description = htmlspecialchars12($item['description']);
+                        $description = $item['description'];
+                        $description = htmlspecialchars12($description);
+                        $description = preg_replace_callback('/\\{(&quot;|\\{)(.+?)(&quot;|})}/s',
+                                fn($matches) => '<code class=sl>' . ($matches[1] === '&quot' ? '&quot' : '') .
+                                        $matches[2] . ($matches[3] === '&quot' ? '&quot' : '') . '</code>',
+                                $description);
                         $required = (in_array($key, $requiredArray) ? 'True' : 'False');
-                        $result[] = "<tr><td class=ms>$key<td class=ms>{$item['type']}"
-                                . "<td class=ms>$required<td>$description";
+                        $result[] = "<tr><td><code>$key</code><td><code>{$item['type']}"
+                                . "</code><td><code>$required</code><td>$description";
                     }
                     return "<thead><tr><th scope=col>Field Name<th scope=col>Type<th scope=col>Required<th scope=col>"
                             . "Field Description</thead><tbody>\n" . implode("\n", $result) . "\n</tbody>";
@@ -201,6 +151,27 @@
     <div style=overflow-x:scroll;margin-top:1em>
         <table><?= createTBody($jsonContent['definitions']['layer']) ?></table>
     </div>
+    <h3 id=FolderStructure>Folder Structure (<a href=#FolderStructure>Link to This Section</a>)</h3>
+    <p class=sl>The LayerZip file requires a specific folder structure. At the root level, all layers that are not in
+        groups MUST be placed directly in the root directory. Layers that belong to a group MUST be placed in a
+        subdirectory named for that group. Layer paths in <code>layerzip.json</code> MUST exactly match their relative
+        paths from the <code>layerzip.json</code> file, using <code>/</code> as the path separator. Implementations
+        SHOULD normalize paths (e.g., remove redundant <code>./</code> or <code>../</code> segments), but the exact
+        normalization method is implementation-defined. Nested groups are allowed. If a group is referenced in
+        <code>layerzip.json</code>, its directory MUST exist in the archive. The directory MAY be empty if no layers are
+        currently assigned to that group, and tools SHOULD preserve empty directories to maintain group hierarchy.
+    <p>Example folder structure:
+    <pre>
+/layerzip.json
+/background.png
+/foreground.png
+/characters/hero.png
+/characters/enemies/villain.png
+/props/           (empty group directory allowed)</pre>
+    <p>Layers MUST be ordered by array index; layers with a higher index MUST be displayed in front of layers with lower
+        indices.
+    <h2 id=Authornotes>Author's Notes (<a href=#Authornotes>Link to This Section</a>)</h2>
+    <p>please tell me how i did. it was my first time writing something like this. this is published independently.
 </div>
 <div style=height:32vh></div>
 </body>
