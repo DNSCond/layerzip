@@ -103,9 +103,19 @@ nav.topnav {
     }
 }
 
-ul.examples > li {
+ul.examples > li, .li-margin1 li, .dd-margin1 dd, .dd-margin1 dt {
     margin-top: 1em;
     margin-bottom: 1em;
+}
+
+.TableOfContents li, .li-margin05 li, .dd-margin05 dd, .dd-margin05 dt {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.dd-margin25 dd, .dd-margin25 dt {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
 }
 
 /* sl = single line */
