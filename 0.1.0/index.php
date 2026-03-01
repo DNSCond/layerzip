@@ -67,6 +67,7 @@
     <p>this document written on
         <time datetime=2026-03-01 data-tolocaltime=date-only>Sun Mar 01 2026</time>
         is the latest LayerZip Specification <a href=https://semver.org/>Semantic version</a> 0.1.0.
+        this is self published independently.
     <h2 id=external>This Specification uses external references (<a href=#external>Link to This Section</a>)</h2>
     <ul class=examples>
         <li><a href=https://www.rfc-editor.org/rfc/rfc2119>The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
@@ -171,7 +172,7 @@
     <p>Layers MUST be ordered by array index; layers with a higher index MUST be displayed in front of layers with lower
         indices.
     <h2 id=Authornotes>Author's Notes (<a href=#Authornotes>Link to This Section</a>)</h2>
-    <p>please tell me how i did. it was my first time writing something like this. this is published independently.
+    <p>please tell me how i did. it was my first time writing something like this. this is self published independently.
 </div>
 <div style=height:32vh></div>
 </body>
