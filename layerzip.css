@@ -1,52 +1,10 @@
 /* main */
-
-:root {
-    --primaryColor: #00ff00;
-    --secondaryColor: #00a600;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --primaryColor: #36393f; /*$borderColor*/
-        --secondaryColor: #36393f /*$bgColor*/;
-    }
-}
-
-:root {
-    --borderColor: var(--primaryColor);
-    --bgColor: var(--secondaryColor)
-}
-
-a:visited, a:link {
-    color: blue;
-}
-
-a:hover {
-    color: orangered;
-}
-
-a:active {
-    color: black;
-}
-
 button, input, textarea, .monospace, .ms {
     font-family: monospace;
 }
 
 html {
-    font-family: system-uim, sans-serif;
-}
-
-.divs {
-    background-color: white;
-}
-
-body {
-    background-color: var(--bgColor);
-}
-
-nav.main.nav-home {
-    border-bottom-color: var(--borderColor);
+    font-family: system-ui, sans-serif;
 }
 
 pre {
@@ -123,4 +81,11 @@ code.sl, .sl code {
     font-family: monospace;
     background-color: #dcdcdc;
     border: 2px solid #dcdcdc;
+}
+
+@media (prefers-color-scheme: dark) {
+    code.sl, .sl code {
+        background-color: #4e4e4e;
+        border: 2px solid #4e4e4e;
+    }
 }
