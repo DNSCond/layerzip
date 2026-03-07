@@ -1,4 +1,9 @@
 /* main */
+:root {
+  --primaryColor:#00ff00;
+  --secondaryColor:#00a600;
+}
+
 button, input, textarea, .monospace, .ms {
     font-family: monospace;
 }
